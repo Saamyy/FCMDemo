@@ -25,6 +25,7 @@ class MainActivity : AppCompatActivity() {
             .addOnCompleteListener(OnCompleteListener { task ->
                 if (!task.isSuccessful) {
                     Log.w(TAG, "getInstanceId failed", task.exception)
+                    regToken?.text="getInstanceId failed"
                     return@OnCompleteListener
                 }
 

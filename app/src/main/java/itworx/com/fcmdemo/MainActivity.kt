@@ -6,6 +6,10 @@ import android.util.Log
 import android.widget.TextView
 import com.google.android.gms.tasks.OnCompleteListener
 import com.google.firebase.iid.FirebaseInstanceId
+import itworx.com.fcmdemo.azureServices.RegistrationIntentService
+import android.content.Intent
+
+
 
 class MainActivity : AppCompatActivity() {
 
@@ -17,7 +21,9 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         regToken = findViewById(R.id.reg_token)
-        getRegistrationToken()
+//        getRegistrationToken()
+        val intent = Intent(this, RegistrationIntentService::class.java)
+        startService(intent)
     }
 
     private fun getRegistrationToken() {

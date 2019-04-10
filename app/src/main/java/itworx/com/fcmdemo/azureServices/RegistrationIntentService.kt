@@ -25,6 +25,8 @@ class RegistrationIntentService : IntentService(TAG) {
 
         try {
             val FCM_token = FirebaseInstanceId.getInstance().token
+
+
             Log.d(TAG, "FCM Registration Token: " + FCM_token!!)
             regID = sharedPreferences.getString("registrationID", null)
             storedToken = sharedPreferences.getString("FCMtoken", "")
@@ -38,6 +40,7 @@ class RegistrationIntentService : IntentService(TAG) {
                     NotificationSettings.HubListenConnectionString, this
                 )
                 Log.d(TAG, "Attempting a new registration with NH using FCM token : $FCM_token")
+                hub.register(FCM_token)
                 regID = hub.register(FCM_token).registrationId
 
                 // If you want to use tags...
